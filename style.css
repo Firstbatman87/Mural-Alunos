@@ -1,0 +1,251 @@
+/* ================= BASE ================= */
+:root {
+    --bg: #f4f6fb;
+    --card: #ffffff;
+    --text: #1a1d23;
+    --subtext: #6b7280;
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --border: #e5e7eb;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+body.dark {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #e2e8f0;
+    --subtext: #94a3b8;
+    --primary: #6366f1;
+    --primary-hover: #818cf8;
+    --border: #334155;
+    --shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* ================= BODY ================= */
+body {
+    font-family: 'Segoe UI', system-ui;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+}
+
+/* ================= TOPO ================= */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--card);
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 18px;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+/* ================= DARK BUTTON ================= */
+.theme-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+}
+
+/* ================= ABAS ================= */
+.abas {
+    display: flex;
+    overflow-x: auto;
+    gap: 5px;
+    padding: 5px;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+}
+
+.abas::-webkit-scrollbar {
+    display: none;
+}
+
+.aba {
+    flex: 0 0 auto;
+    padding: 10px 14px;
+    cursor: pointer;
+    color: var(--subtext);
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: 0.2s;
+}
+
+.aba:hover {
+    color: var(--text);
+}
+
+.aba.ativa {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+    font-weight: 600;
+}
+
+/* ================= CONTAINER ================= */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    /* expandido */
+    margin: auto;
+    padding: 15px;
+}
+
+/* ================= BUSCA ================= */
+.busca {
+    margin-bottom: 15px;
+}
+
+.busca input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    outline: none;
+    box-shadow: var(--shadow);
+}
+
+.busca input:focus {
+    border-color: var(--primary);
+}
+
+/* ================= GRID DO MURAL ================= */
+#mural {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+/* ================= CARD ================= */
+.card {
+    background: var(--card);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+/* imagem adaptativa */
+.card img {
+    width: 100%;
+    height: auto;
+    /* corrigido */
+    max-height: 250px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* conteúdo */
+.card-content {
+    padding: 15px;
+}
+
+.card h2 {
+    margin: 0 0 8px;
+    font-size: 18px;
+}
+
+.card p {
+    color: var(--subtext);
+}
+
+.card small {
+    color: var(--subtext);
+    display: block;
+    margin-top: 10px;
+}
+
+/* ================= TAG ================= */
+.tag {
+    background: var(--primary);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* ================= ESTADOS ================= */
+.loading,
+.vazio {
+    text-align: center;
+    color: var(--subtext);
+    margin-top: 30px;
+}
+
+/* ================= MODAL ================= */
+#modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+#modal img {
+    max-width: 95%;
+    max-height: 90%;
+    border-radius: 12px;
+}
+
+/* ================= RESPONSIVIDADE ================= */
+
+/* 📱 MOBILE pequeno */
+@media (max-width: 480px) {
+    .topbar {
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .card h2 {
+        font-size: 16px;
+    }
+}
+
+/* 📲 TABLET */
+@media (min-width: 600px) {
+    #mural {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* 💻 DESKTOP */
+@media (min-width: 900px) {
+    #mural {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .container {
+        padding: 25px;
+    }
+}
+
+/* 🖥️ TELAS GRANDES */
+@media (min-width: 1300px) {
+    #mural {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
